@@ -1,8 +1,18 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js + TypeScript App"/>
+
+  <div id>
+    <div id="nav">
+      <router-link to="/login">login</router-link>|
+      <router-link to="/register">register</router-link>|
+      <router-link to="/forgotPassword">forgot password</router-link>|
+      <router-link to="/resetPassword">reset password</router-link>|
+      <router-link to="/activateAccount">activate account</router-link>|
+      <router-link to="/panel">panel</router-link>|
+    </div>
+    <router-view/>
+  
   </div>
+  
 </template>
 
 <script lang="ts">
@@ -14,7 +24,13 @@ import HelloWorld from './components/HelloWorld.vue';
     HelloWorld,
   },
 })
-export default class App extends Vue {}
+export default class App extends Vue {
+
+  mounted(){
+    //this.$router.push('/login');
+    //alert("estoy en app")
+  }
+}
 </script>
 
 <style>
