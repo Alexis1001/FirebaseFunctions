@@ -74,6 +74,7 @@ export default {
 
             }else{
                 console.log("las contrasenias no coinciden ");
+                alert("las contrasenias no coinciden");
             }
         },
 

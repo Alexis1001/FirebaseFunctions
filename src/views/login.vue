@@ -33,29 +33,53 @@ export default {
             }          
         }
     },
+    /*mounted(){
+        console.log("el email es "+this.user.email);
+    },*/
     methods:{
         login:function(){
-            console.log("email "+this.user.email);
-            console.log("password "+this.user.password);
-            console.log("estoy clikiando")
+            //console.log("email "+this.user.email);
+            //console.log("password "+this.user.password);
+            //console.log("estoy clickiando")
             var ema=this.user.email;
             var pass=this.user.password;
             db.collection("users").get().
             then(function(querySnapshot) {
-                //navegar();
                 querySnapshot.forEach(function(doc) {
                     console.log(doc.id, " => ", doc.data());
                     if(doc.data().status=="activo"){
                         if(doc.data().email==ema&&doc.data().password==pass){  
-                            router.push({name: 'panel'}); 
+                            if(doc.data().twosstep=="no"){
+                                router.push({name: 'panel'}); 
+                                localStorage.setItem('email', JSON.stringify(doc.data().email)); 
+                                localStorage.setItem('name', JSON.stringify(doc.data().name)); 
+                                localStorage.setItem('twosstep', JSON.stringify(doc.data().twosstep)); 
+                                localStorage.setItem('phone', JSON.stringify(doc.data().phone)); 
+                            }
+                            if(doc.data().twosstep=="si"){
+                                console.log("ir a dos pasos ");
+                                var ramdom =Math.floor(Math.random() * 1000) +3000;
+                                var coleccion = db.collection("users").doc(doc.id);
+                                coleccion.update({
+                                    numero:ramdom,
+                                }).then(function() {
+                                    console.log("Document successfully updated!");
+                                    localStorage.setItem('email', JSON.stringify(doc.data().email));
+                                    router.push({name: 'dosPasos'});
+                                    alert("verificacion en su correo ");
+                                }).catch(function(error) {
+                                    console.error("Error updating document: ", error);
+                                })                                
+                            }
                         }else{
                             alert("contraseña o password incorrectos");
                         }  
                     }else{
-                      alert("activa tu cuente o registrate");
+                      console.log("datos no encotrados ");
                     }
                 });
-            });   
+            });
+
         },
     }   
 }

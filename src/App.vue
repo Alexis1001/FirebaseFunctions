@@ -3,11 +3,7 @@
   <div id>
     <div id="nav">
       <router-link to="/login">login</router-link>|
-      <router-link to="/register">register</router-link>|
-      <router-link to="/forgotPassword">forgot password</router-link>|
-      <router-link to="/resetPassword">reset password</router-link>|
-      <router-link to="/activateAccount">activate account</router-link>|
-      <router-link to="/panel">panel</router-link>|
+      
     </div>
     <router-view/>
   

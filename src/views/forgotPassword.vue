@@ -52,8 +52,10 @@ export default {
                              token:token,
                         }).then(function(docRef) {
                             console.log("Document written with ID: ", docRef.id);
+                            router.push("/login");
                         }).catch(function(error) {
                             console.error("Error adding document: ", error);
+                            alert("a ocurrido un error");
                         });
                     }
                 });

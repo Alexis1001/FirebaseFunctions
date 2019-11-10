@@ -59,6 +59,7 @@ export default {
                         router.push("/login");
                     }).catch(function(error) {
                         console.error("Error updating document: ", error);
+                        alert("a ocurrido un error ");
                     })
                 });
                 

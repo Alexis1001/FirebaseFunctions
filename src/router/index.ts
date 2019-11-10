@@ -8,6 +8,8 @@ import forgotPassword from '../views/forgotPassword.vue';
 import resetPassword from '../views/resetPassword.vue';
 import notFound from '../views/notFound.vue';
 import panel from '../views/panel.vue';
+import dosPasos from '../views/dosPasos.vue';
+
 //import VueCryptojs from 'vue-cryptojs';
 
 Vue.use(VueRouter);
@@ -21,6 +23,7 @@ const routes = [
   {path:'/forgotPassword',name:'forgotPassword',component:forgotPassword},
   {path:'/resetPassword/:token',name:'resetPassword',component:resetPassword},
   {path:'/panel',name:'panel',component:panel},
+  {path:'/dosPasos',name:'dosPasos',component:dosPasos},
   {path: '/404', component:notFound}
 
 ];
